@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:state_management_flutter/widgets/tasks_list.dart';
 import 'package:state_management_flutter/screens/add_task_screen.dart';
+import 'package:state_management_flutter/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management_flutter/models/task_data.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<Task> tasks = Provider.of<TaskData>(context).tasks;
+
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
@@ -30,7 +35,7 @@ class TaskScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     )),
-                Text('N tasks to do',
+                Text('${tasks.length} tasks to do',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
